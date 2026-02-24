@@ -1,4 +1,5 @@
 import {
+  ArrowRightIcon,
   CarFrontIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -22,7 +23,7 @@ export default function Home() {
           </button>
         </div>
       </header>
-      <div className="flex justify-center gap-10 border-y border-slate-200 bg-[#f6f6f8] p-6">
+      <div className="flex flex-col justify-center gap-10 border-y border-slate-200 bg-[#f6f6f8] p-6 md:flex-row">
         <aside className="flex flex-col items-center gap-4">
           <div className="w-full space-y-6 rounded-xl border border-slate-200 bg-white p-6 text-black">
             <div className="flex justify-between">
@@ -76,16 +77,45 @@ export default function Home() {
                 Showing 12 luxury sedans available in stock.
               </p>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="flex gap-2 bg-white">
-                <input type="radio" name="view" id="grid-view" />
-                <LayoutGridIcon color="blue" fill="blue" />
-                <input type="radio" name="view" id="list-view" />
-                <LogsIcon color="blue" fill="blue" />
+            <div className="flex items-center gap-4 text-black">
+              <div className="flex gap-2 rounded-lg border border-slate-200 bg-white p-1">
+                <input
+                  type="radio"
+                  name="view"
+                  id="grid-view"
+                  hidden
+                  defaultChecked
+                  className="peer/grid"
+                />
+                <label
+                  htmlFor="grid-view"
+                  className="p-1.5 text-slate-400 peer-checked/grid:text-blue-600 hover:bg-slate-100"
+                >
+                  <LayoutGridIcon />
+                </label>
+                <input
+                  type="radio"
+                  name="view"
+                  id="list-view"
+                  hidden
+                  className="peer/list"
+                />
+                <label
+                  htmlFor="list-view"
+                  className="p-1.5 text-slate-400 peer-checked/list:text-blue-600 hover:bg-slate-100"
+                >
+                  <LogsIcon />
+                </label>
               </div>
-              <div className="text-black">
-                Ordernar:{" "}
-                <select name="order" id="order" className="text-black">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium text-slate-500">
+                  Ordernar:{" "}
+                </span>
+                <select
+                  name="order"
+                  id="order"
+                  className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-bold shadow-sm"
+                >
                   <option value="price-low">Mais Recentes</option>
                   <option value="price-high">Preço: Decrescente</option>
                   <option value="year">Ano</option>
@@ -93,7 +123,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-4 text-black">
+          <div className="grid grid-cols-1 gap-4 text-black lg:grid-cols-2 xl:grid-cols-3">
             <CarCard />
             <CarCard />
             <CarCard />
@@ -193,10 +223,17 @@ function CarCard() {
             <h2>Gasoline</h2>
           </div>
         </div>
-        <h1 className="pt-4 text-2xl font-extrabold text-blue-600">$45.900</h1>
-        <h2 className="text-[10px] font-medium text-slate-400 uppercase">
-          EST. $765/MÊS
-        </h2>
+        <div className="flex items-center justify-between pt-4">
+          <div>
+            <h1 className="text-2xl font-extrabold text-blue-600">$45.900</h1>
+            <h2 className="text-[10px] font-medium text-slate-400 uppercase">
+              EST. $765/MÊS
+            </h2>
+          </div>
+          <button className="rounded-lg bg-slate-100 p-2.5 hover:bg-[#f6f6f8]">
+            <ArrowRightIcon />
+          </button>
+        </div>
       </div>
     </div>
   );
